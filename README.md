@@ -1,34 +1,11 @@
-# Robust Federated Learning with Noisy Labels
-This is an unofficial PyTorch implementation of [Robust Federated Learning with Noisy Labels](https://arxiv.org/abs/2012.01700). 
+# 设备数据质量差异对联邦学习的影响研究
 
-## Requirements
-- python 3.8.8
-- pytorch 1.8.0
-- torchvision 0.9.0 
+## 摘要
+  联邦学习作为一种在保障用户数据隐私的前提下，通过交换模型参数或中间结果来实现全局模型训练的分布式机器学习技术，已逐渐成为分布式场景下机器学习技术的首选。然而，设备数据质量差异可能导致模型训练的偏差和不稳定，降低模型的泛化能力和准确性。本文主要探讨噪声标签这类数据质量问题对联邦学习性能的影响。为了深入探究数据质量差异对联邦学习模型性能的影响，并验证所采用算法的有效性，本文设计了三个实验。这些实验主要围绕FedAvg算法和本文采用的FedNL算法在含有噪声的数据集上的表现展开。在通过实验证实了噪声标签对传统算法FedAvg的负面影响后，采用FedNL算法对联邦学习训练效果进行改进。该算法通过交换全局和局部类中心来保持一致的决策边界，并引入了一种全局引导伪标签方法，有效提高了模型在噪声环境下的鲁棒性。实验结果表明，FedNL算法在设备数据质量存在差异时的表现显著优于FedAvg算法，为解决联邦学习中的数据质量差异问题提供了可靠的解决方案。
 
-## Usage
-Results can be reproduced running the following:
+  关键词：联邦学习；数据质量；噪声标签；类中心；全局引导伪标签
 
-#### MNIST
+## Abstract
+  Federated learning, as a distributed machine learning technique that realizes global model training by exchanging model parameters or intermediate results under the premise of safeguarding user data privacy, has gradually become the preferred choice of machine learning techniques in distributed scenarios. However, differences in device data quality may lead to bias and instability in model training, reducing the generalization ability and accuracy of models. In this paper, we focus on the impact of data quality issues such as noise labeling on the performance of federated learning. In order to deeply explore the impact of data quality differences on the performance of federated learning models and to validate the effectiveness of the proposed algorithms, three experiments are designed in this paper. These experiments mainly focus on the performance of FedAvg algorithm and FedNL algorithm adopted in this paper on datasets containing noise. After experimentally confirming the negative impact of noisy labels on the traditional algorithm FedAvg, the FedNL algorithm is employed to improve the federated learning training effectiveness. The algorithm maintains consistent decision boundaries by exchanging global and local class centroids, and introduces a global-guided pseudo-labeling method, which effectively improves the robustness of the model in noisy environments. Experimental results show that the FedNL algorithm significantly outperforms the FedAvg algorithm when there is a difference in the quality of device data, providing a reliable solution to the problem of data quality difference in federated learning.
 
-```
-python3 main.py --gpu 0 --iid --dataset mnist --epochs 1000 --noise_type symmetric --noise_rate 0.2 
-```
-```
-python3 main.py --gpu 0 --iid --dataset mnist --epochs 1000 --noise_type pairflip --noise_rate 0.2 
-```
-
-#### CIFAR10
-
-```
-python3 main.py --gpu 0 --iid --dataset cifar --epochs 1000 --noise_type symmetric --noise_rate 0.2 
-```
-```
-python3 main.py --gpu 0 --iid --dataset cifar --epochs 1000 --noise_type pairflip --noise_rate 0.2 
-```
-
-## References
-- Yang, S., Park, H., Byun, J., & Kim, C. (2020). Robust Federated Learning with Noisy Labels. arXiv preprint arXiv:2012.01700.
-
-# Acknowledgements
-This codebase was adapted from https://github.com/shaoxiongji/federated-learning and https://github.com/bhanML/Co-teaching
+  Keyword: Federated learning; Noisy label; Data quality; Class-wise centroid; Global-guided pseudo-labeling
